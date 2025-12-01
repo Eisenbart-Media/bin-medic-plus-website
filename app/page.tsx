@@ -1,229 +1,198 @@
-import { Navbar } from "@/components/ui/Navbar";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { ServicesSection } from "@/components/sections/ServicesSection";
-import { AboutSection } from "@/components/sections/AboutSection";
-import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
-import { ContactSection } from "@/components/sections/ContactSection";
-import { FooterSection } from "@/components/sections/FooterSection";
-import type { Service } from "@/components/sections/ServicesSection";
+import { Navbar } from '@/components/ui/Navbar';
+import { HeroSection } from '@/components/sections/HeroSection';
+import { WelcomeSection } from '@/components/sections/WelcomeSection';
+import { AboutSection } from '@/components/sections/AboutSection';
+import { ReviewsSection } from '@/components/sections/ReviewsSection';
+import { OurProcessSection } from '@/components/sections/OurProcessSection';
+import { WhyChooseUsSection } from '@/components/sections/WhyChooseUsSection';
+import { PricingFaqSection } from '@/components/sections/PricingFaqSection';
+import { CtaBannerSection } from '@/components/sections/CtaBannerSection';
+import { ContactSection } from '@/components/sections/ContactSection';
+import { FooterSection } from '@/components/sections/FooterSection';
+import { Ban, Leaf, Bug, CheckCheck } from 'lucide-react';
 
 export default function Home() {
-  const businessName = "Bin Medic+";
-  const phone = "+1 825-882-2226";
-  const email = "info@binmedic.ca";
+	const businessName = 'Bin Medic+';
+	const phone = '(825) 882-2226';
+	const email = 'info@binmedic.ca';
+	const prebookLink =
+		'https://book.housecallpro.com/book/BIN-MEDIC-/38639536204340e28b846908bf2cb80d';
 
-  // Custom services for garbage bin cleaning
-  const services: Service[] = [
-    {
-      id: "1",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-        </svg>
-      ),
-      title: "Residential Bin Cleaning",
-      description: "Keep your home's garbage and recycling bins fresh and sanitary. We clean, sanitize, and deodorize your bins right at your curb.",
-      price: "From $15",
-      href: "#contact"
-    },
-    {
-      id: "2",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-        </svg>
-      ),
-      title: "Commercial Bin Cleaning",
-      description: "Professional bin cleaning services for businesses, restaurants, apartment buildings, and commercial properties. Keep your premises clean and odor-free.",
-      price: "Custom Quote",
-      href: "#contact"
-    },
-    {
-      id: "3",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-        </svg>
-      ),
-      title: "One-Time Deep Clean",
-      description: "Need a one-time deep clean for your bins? Perfect for move-ins, spring cleaning, or getting rid of stubborn odors and buildup.",
-      price: "From $25",
-      href: "#contact"
-    },
-    {
-      id: "4",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      ),
-      title: "Monthly Subscriptions",
-      description: "Set it and forget it! Regular monthly cleaning keeps your bins fresh year-round. Save money with our subscription plans.",
-      price: "From $12/mo",
-      href: "#contact"
-    },
-    {
-      id: "5",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      ),
-      title: "Sanitization Service",
-      description: "High-pressure washing with eco-friendly sanitizers eliminates 99.9% of bacteria, germs, and viruses from your bins.",
-      price: "Included",
-      href: "#contact"
-    },
-    {
-      id: "6",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-      title: "Deodorizing Treatment",
-      description: "Say goodbye to unpleasant odors! Our special deodorizing treatment leaves your bins smelling fresh and clean.",
-      price: "Included",
-      href: "#contact"
-    }
-  ];
+	return (
+		<>
+			<Navbar
+				logo={{
+					text: businessName,
+					href: '#',
+				}}
+				links={[
+					{ label: 'Home', href: '#' },
+					{ label: 'About Us', href: '#about' },
+					{ label: 'Our Process', href: '#our-process' },
+					{ label: 'Pricing', href: '#pricing' },
+					{ label: 'Contact Us', href: '#contact' },
+				]}
+				cta={{
+					label: 'Prebook Now',
+					href: prebookLink,
+				}}
+			/>
 
-  return (
-    <>
-      <Navbar
-        logo={{
-          text: businessName,
-          href: "#"
-        }}
-        links={[
-          { label: "Home", href: "#" },
-          { label: "Services", href: "#services" },
-          { label: "About", href: "#about" },
-          { label: "Why Choose Us", href: "#why-choose-us" },
-          { label: "Contact", href: "#contact" }
-        ]}
-        cta={{
-          label: "Get a Quote",
-          href: "#contact"
-        }}
-      />
+			<main>
+				<HeroSection
+					businessName={businessName}
+					headline="Bin Cleaning Experts Building a Better Tomorrow"
+					subheadline="Professional, eco-friendly bin cleaning that eliminates odors, bacteria, and germs. Keep your home or business fresh and sanitary with our convenient curbside service."
+					ctaText="Prebook Now"
+					ctaHref={prebookLink}
+				/>
 
-      <main>
-        <HeroSection
-          businessName={businessName}
-          headline="Calgary's Premier Garbage Bin Cleaning Service"
-          subheadline="Professional, eco-friendly bin cleaning that eliminates odors, bacteria, and germs. Keep your home or business fresh and sanitary with our convenient curbside service."
-          ctaText="Schedule Cleaning"
-          ctaHref="#contact"
-          secondaryCtaText="View Services"
-          secondaryCtaHref="#services"
-        />
+				<WelcomeSection
+					businessName={businessName}
+					videoId="btw39_f6P6I"
+				/>
 
-        <ServicesSection
-          businessName={businessName}
-          headline="Our Cleaning Services"
-          subheadline="From one-time deep cleans to monthly subscriptions, we offer flexible cleaning solutions for homes and businesses throughout Calgary."
-          services={services}
-        />
+				<AboutSection
+					businessName={businessName}
+					headline="A Local Family Business"
+					story="We are a local family-owned business deeply committed to both our community and the environment. The inspiration for our services arose from conversations with neighbors about the unpleasantness of 'Those Nasty Bins.' You know the scenario: on a sweltering day, after mowing the lawn or cleaning up after pets, you're enjoying time outdoors when an awful smell suddenly wafts through the air. Where could it be coming from? 'Those Nasty Bins!' Never fear, Bin Medic+ is here and HAS THE CURE FOR YOUR BINS!"
+					mission="Bin Medic+ offers an affordable and environmentally friendly mobile bin cleaning service that assists homeowners in eliminating harmful bacteria, offensive odors, pesky insects, and curious rodents. Our specialized self-contained truck utilizes a groundbreaking cleaning process that employs clean hot water heated to 200 degrees F, without any chemical additives. This method effectively kills 99.9% of known bacteria while also eliminating nasty odors."
+					closing="Our team provides a reliable hassle-free curbside garbage bin cleaning service that our customers can depend on, helping to ensure a safe and healthy world for future generations."
+					stats={[
+						{ value: '5,000+', label: 'Bins Cleaned' },
+						{ value: '100%', label: 'Eco-Friendly' },
+						{ value: '99.9%', label: 'Bacteria Eliminated' },
+						{ value: 'Calgary', label: 'Proudly Local' },
+					]}
+					ctaText="Prebook Today"
+					ctaHref={prebookLink}
+					image="/about.png"
+				/>
 
-        <AboutSection
-          businessName={businessName}
-          headline="Keeping Calgary Clean, One Bin at a Time"
-          story="Bin Medic+ was founded with a simple mission: to provide Calgary residents and businesses with a convenient, affordable solution to one of life's messiest problems - dirty, smelly garbage bins. What started as a local service has grown into Calgary's most trusted bin cleaning company."
-          mission="We use high-pressure, hot water cleaning systems and eco-friendly sanitizers to eliminate 99.9% of bacteria, viruses, and odors from your bins. Our service is convenient (we come to you), affordable, and environmentally responsible. We reclaim and filter all wastewater to protect Calgary's environment."
-          stats={[
-            { value: "5,000+", label: "Bins Cleaned" },
-            { value: "100%", label: "Eco-Friendly" },
-            { value: "99.9%", label: "Bacteria Eliminated" },
-            { value: "Calgary", label: "Proudly Local" }
-          ]}
-          ctaText="Get Started Today"
-          ctaHref="#contact"
-        />
+				<ReviewsSection
+					businessName={businessName}
+					googleBusinessUrl="https://www.google.com/maps/place/Bin+Medic%2B/@51.0272883,-114.3680132,10z/data=!4m8!3m7!1s0x5371772292a7d895:0x50455b7b62b0f0a2!8m2!3d50.9541194!4d-114.087835!9m1!1b1!16s%2Fg%2F11pwx98z2y"
+					averageRating={5.0}
+					totalReviews={795}
+					reviews={[
+						{
+							id: '1',
+							author: 'P. Sully',
+							rating: 5,
+							text: "BIN MEDIC+, a local family business, doesn't disappoint. They schedule bin cleaning after the city garbage collection. The bins are now resistant to summer heat and smell fragrant. Thank you BIN MEDIC+!",
+							date: '4 months ago',
+						},
+						{
+							id: '2',
+							author: 'Patty Hodges',
+							rating: 5,
+							text: 'My bins were absolutely filthy, especially the green and black ones.  These are impeccably clean! Thanks so much…we will be calling you again.  😊😊 …',
+							date: '2 months ago',
+						},
+						{
+							id: '3',
+							author: 'Amber Pessell',
+							rating: 5,
+							text: `Fantastic!
+My bins have never been cleaned before today. They look new! They smell like cleaner instead of my rude new neighbours, dogs poops. (I forgot a before photo-but it was gross).
+Thanks so much for having availability a few days out and for being so quick!`,
+							date: '2 months ago',
+						},
+					]}
+				/>
 
-        <WhyChooseUsSection
-          businessName={businessName}
-          headline="Why Choose Bin Medic+?"
-          reasons={[
-            {
-              id: "1",
-              icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              ),
-              title: "Convenient Curbside Service",
-              description: "We come to you on your regular trash day. Just leave your empty bins at the curb and we'll clean them while you're at work or relaxing at home."
-            },
-            {
-              id: "2",
-              icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              ),
-              title: "Eco-Friendly Process",
-              description: "We use biodegradable, eco-friendly cleaning products and reclaim all wastewater. Our process is safe for your family, pets, and the environment."
-            },
-            {
-              id: "3",
-              icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              ),
-              title: "Affordable Pricing",
-              description: "Quality service at prices that won't break the bank. Save even more with our monthly subscription plans and enjoy consistently clean bins year-round."
-            },
-            {
-              id: "4",
-              icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              ),
-              title: "Professional Results",
-              description: "High-pressure hot water cleaning eliminates stubborn grime, bacteria, and odors. Your bins will look and smell like new after every cleaning."
-            }
-          ]}
-        />
+				<OurProcessSection
+					businessName={businessName}
+					videoId="btw39_f6P6I"
+				/>
 
-        <ContactSection
-          businessName={businessName}
-          phone={phone}
-          email={email}
-          address="Serving Calgary and surrounding areas, AB"
-          businessHours={[
-            { day: "Monday - Friday", hours: "8:00 AM - 6:00 PM" },
-            { day: "Saturday", hours: "9:00 AM - 4:00 PM" },
-            { day: "Sunday", hours: "Closed" }
-          ]}
-        />
-      </main>
+				<WhyChooseUsSection
+					businessName={businessName}
+					headline="Why Choose Bin Medic+?"
+					reasons={[
+						{
+							id: '1',
+							icon: <Ban className="w-10 h-10" />,
+							title: 'Eliminates Bacteria & Odors',
+							description:
+								'Our professional cleaning service cleans, sanitizes, and deodorizes your garbage bins, effectively killing 99.9% of harmful bacteria that gather from slime, dirt, and odors.',
+						},
+						{
+							id: '2',
+							icon: <Leaf className="w-10 h-10" />,
+							title: 'Environmentally Safe & Clean',
+							description:
+								'Our self-contained truck prevents wastewater from contaminating storm drains or property. We use clean water and dispose of used water at a licensed facility, ensuring a sanitary and environmentally safe cleaning system.',
+						},
+						{
+							id: '3',
+							icon: <Bug className="w-10 h-10" />,
+							title: 'Eliminates Insects & Rodents',
+							description:
+								'Odors and food waste attract pests, creating breeding grounds for harmful bacteria and diseases like E. Coli, Salmonella, and Listeria. Regular maintenance helps eliminate these threats for a cleaner, healthier environment.',
+						},
+						{
+							id: '4',
+							icon: <CheckCheck className="w-10 h-10" />,
+							title: 'Affordable & Convenient',
+							description:
+								'Our specialized curbside cleaning system handles the messy task for you. With multiple cost-effective annual plans and one-time cleaning services, Bin Medic+ is the leading provider of professional and affordable bin cleaning solutions.',
+						},
+					]}
+				/>
 
-      <FooterSection
-        businessName={businessName}
-        phone={phone}
-        email={email}
-        address="Calgary, Alberta"
-        links={[
-          { label: "Home", href: "#" },
-          { label: "Services", href: "#services" },
-          { label: "About", href: "#about" },
-          { label: "Why Choose Us", href: "#why-choose-us" },
-          { label: "Contact", href: "#contact" }
-        ]}
-        serviceLinks={[
-          { label: "Residential Cleaning", href: "#services" },
-          { label: "Commercial Cleaning", href: "#services" },
-          { label: "One-Time Service", href: "#services" },
-          { label: "Monthly Plans", href: "#services" }
-        ]}
-        socialLinks={{
-          facebook: "https://facebook.com/binmedicplus",
-          instagram: "https://instagram.com/binmedicplus"
-        }}
-      />
-    </>
-  );
+				<PricingFaqSection
+					businessName={businessName}
+					ctaHref={prebookLink}
+				/>
+
+				<CtaBannerSection
+					headline="DON'T DELAY, BOOK BIN MEDIC+ TODAY!"
+					subheadline="Let us be the cure for your bins."
+					ctaText="Prebook Now"
+					ctaHref={prebookLink}
+				/>
+
+				<ContactSection
+					businessName={businessName}
+					phone={phone}
+					email={email}
+					address="Serving Calgary and surrounding areas, AB"
+					businessHours={[
+						{ day: 'Monday', hours: 'Closed' },
+						{ day: 'Tuesday', hours: 'Closed' },
+						{ day: 'Wednesday', hours: '8:00 AM - 8:00 PM' },
+						{ day: 'Thursday', hours: '8:00 AM - 8:00 PM' },
+						{ day: 'Friday', hours: '8:00 AM - 8:00 PM' },
+						{ day: 'Saturday', hours: '8:00 AM - 8:00 PM' },
+						{ day: 'Sunday', hours: '9:00 AM - 7:00 PM' },
+					]}
+				/>
+			</main>
+
+			<FooterSection
+				businessName={businessName}
+				phone={phone}
+				email={email}
+				address="Calgary, Alberta"
+				links={[
+					{ label: 'Home', href: '#' },
+					{ label: 'About Us', href: '#about' },
+					{ label: 'Our Process', href: '#process' },
+					{ label: 'Pricing', href: '#pricing' },
+					{ label: 'Contact', href: '#contact' },
+				]}
+				businessHours={[
+					{ day: 'Monday', hours: 'Closed' },
+					{ day: 'Tuesday', hours: 'Closed' },
+					{ day: 'Wed - Sat', hours: '8:00 AM - 8:00 PM' },
+					{ day: 'Sunday', hours: '9:00 AM - 7:00 PM' },
+				]}
+				socialLinks={{
+					facebook: 'https://facebook.com/binmedicplus',
+					instagram: 'https://instagram.com/binmedicplus',
+				}}
+			/>
+		</>
+	);
 }

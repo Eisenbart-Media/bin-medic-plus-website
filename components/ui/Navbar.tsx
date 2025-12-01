@@ -3,6 +3,7 @@
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { GoogleReviewsBadge } from './GoogleReviewsBadge';
 
 interface NavbarLink {
 	label: string;
@@ -36,7 +37,7 @@ export const Navbar = ({ logo, links = [], cta, className }: NavbarProps) => {
 	return (
 		<nav
 			className={cn(
-				'sticky top-0 z-50 backdrop-blur border-b border-slate-200/60 bg-slate-50/80',
+				'fixed z-50 w-full backdrop-blur-md border-b border-slate-200/60 bg-slate-50/80',
 				'shadow-md shadow-slate-900/5',
 				className
 			)}
@@ -51,19 +52,8 @@ export const Navbar = ({ logo, links = [], cta, className }: NavbarProps) => {
 							tabIndex={0}
 							aria-label={logo.text || 'Home'}
 						>
-							{logo.src ? (
-								<img
-									src={logo.src}
-									alt={logo.alt ?? 'Logo'}
-									className="h-9 w-9 sm:h-10 sm:w-10 rounded-lg object-cover flex-shrink-0"
-								/>
-							) : (
-								<span className="h-9 w-9 sm:h-10 sm:w-10 flex items-center justify-center rounded-full bg-[var(--template-primary)]/10 text-[var(--template-primary)] text-lg sm:text-xl flex-shrink-0">
-									{logo.text?.slice(0, 1)}
-								</span>
-							)}
 							{logo.text && (
-								<span className="hidden sm:inline truncate max-w-[200px]">
+								<span className="truncate max-w-[150px] sm:max-w-[200px]">
 									{logo.text}
 								</span>
 							)}
@@ -71,7 +61,7 @@ export const Navbar = ({ logo, links = [], cta, className }: NavbarProps) => {
 					)}
 				</div>
 
-				{/* Desktop Navigation */}
+				{/* Desktop Navigation + CTA */}
 				<div className="hidden md:flex flex-1 items-center justify-center gap-4 lg:gap-6 text-sm font-medium text-slate-700">
 					{links.map((link) => (
 						<a
@@ -88,11 +78,7 @@ export const Navbar = ({ logo, links = [], cta, className }: NavbarProps) => {
 							{link.label}
 						</a>
 					))}
-				</div>
-
-				{/* Desktop CTA */}
-				<div className="hidden md:block flex-shrink-0">
-					{cta ? (
+					{cta && (
 						<a
 							href={cta.href}
 							className="inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 rounded-full bg-[var(--template-secondary)] text-[var(--template-secondary-foreground)] text-sm font-semibold shadow-lg shadow-[var(--template-secondary)]/30 transition-all duration-200 hover:translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--template-secondary)]/60"
@@ -100,9 +86,15 @@ export const Navbar = ({ logo, links = [], cta, className }: NavbarProps) => {
 						>
 							{cta.label}
 						</a>
-					) : (
-						<div className="w-20 lg:w-24" />
 					)}
+				</div>
+
+				{/* Google Reviews Badge */}
+				<div className="hidden md:block flex-shrink-0">
+					<GoogleReviewsBadge
+						rating={5.0}
+						href="https://www.google.com/maps/place/Bin+Medic%2B/@51.0272883,-114.3680132,10z/data=!4m8!3m7!1s0x5371772292a7d895:0x50455b7b62b0f0a2!8m2!3d50.9541194!4d-114.087835!9m1!1b1!16s%2Fg%2F11pwx98z2y"
+					/>
 				</div>
 
 				{/* Mobile Menu Button - 44px minimum touch target */}
@@ -125,7 +117,9 @@ export const Navbar = ({ logo, links = [], cta, className }: NavbarProps) => {
 			<div
 				className={cn(
 					'md:hidden overflow-hidden transition-all duration-300 ease-in-out',
-					isMobileMenuOpen ? 'max-h-[calc(100vh-80px)] opacity-100' : 'max-h-0 opacity-0'
+					isMobileMenuOpen
+						? 'max-h-[calc(100vh-80px)] opacity-100'
+						: 'max-h-0 opacity-0'
 				)}
 			>
 				<div className="px-4 pb-6 pt-2 space-y-1 bg-slate-50/95 backdrop-blur-sm border-t border-slate-100">

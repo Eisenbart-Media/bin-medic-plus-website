@@ -76,89 +76,109 @@ export const HeroSection = ({
 			</div>
 
 			{/* Content */}
-			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
-				<div className="max-w-3xl">
-					{/* Accent line */}
-					<div
-						className={cn(
-							'w-16 h-1 mb-8 rounded-full',
-							backgroundImage
-								? 'bg-white/80'
-								: 'bg-[var(--template-primary)]'
-						)}
-						aria-hidden="true"
-					/>
+			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 animate-fade-in">
+				<div className="flex flex-col lg:flex-row items-end lg:items-center gap-8 lg:gap-12">
+					{/* Text Content */}
+					<div className="max-w-3xl flex-1">
+						{/* Accent line */}
+						<div
+							className={cn(
+								'w-16 h-1 mb-8 rounded-full',
+								backgroundImage
+									? 'bg-white/80'
+									: 'bg-[var(--template-primary)]'
+							)}
+							aria-hidden="true"
+						/>
 
-					{/* Business name tag */}
-					<p
-						className={cn(
-							'text-sm font-semibold tracking-[0.2em] uppercase mb-4',
-							backgroundImage
-								? 'text-white/70'
-								: 'text-[var(--template-primary)]'
-						)}
-					>
-						{businessName}
-					</p>
-
-					{/* Headline */}
-					<h1
-						className={cn(
-							'text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6',
-							backgroundImage ? 'text-white' : 'text-slate-900'
-						)}
-					>
-						{displayHeadline}
-					</h1>
-
-					{/* Subheadline */}
-					<p
-						className={cn(
-							'text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl',
-							backgroundImage ? 'text-white/85' : 'text-slate-600'
-						)}
-					>
-						{displaySubheadline}
-					</p>
-
-					{/* CTAs */}
-					<div className="flex flex-wrap gap-4">
-						<TemplateButton
-							variant={backgroundImage ? 'secondary' : 'primary'}
-							size="lg"
-							href={ctaHref}
+						{/* Business name tag */}
+						<p
+							className={cn(
+								'text-sm font-semibold tracking-[0.2em] uppercase mb-4',
+								backgroundImage
+									? 'text-white/70'
+									: 'text-[var(--template-primary)]'
+							)}
 						>
-							{ctaText}
-							<svg
-								className="w-5 h-5 ml-1"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-								aria-hidden="true"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth={2}
-									d="M17 8l4 4m0 0l-4 4m4-4H3"
-								/>
-							</svg>
-						</TemplateButton>
+							{businessName}
+						</p>
 
-						{secondaryCtaText && (
+						{/* Headline */}
+						<h1
+							className={cn(
+								'text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6',
+								backgroundImage
+									? 'text-white'
+									: 'text-slate-900'
+							)}
+						>
+							{displayHeadline}
+						</h1>
+
+						{/* Subheadline */}
+						<p
+							className={cn(
+								'text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl',
+								backgroundImage
+									? 'text-white/85'
+									: 'text-slate-600'
+							)}
+						>
+							{displaySubheadline}
+						</p>
+
+						{/* CTAs */}
+						<div className="flex flex-wrap gap-4">
 							<TemplateButton
-								variant={backgroundImage ? 'ghost' : 'outline'}
-								size="lg"
-								href={secondaryCtaHref}
-								className={
-									backgroundImage
-										? 'text-white border-white/30 hover:bg-white/10'
-										: ''
+								variant={
+									backgroundImage ? 'secondary' : 'primary'
 								}
+								size="lg"
+								href={ctaHref}
 							>
-								{secondaryCtaText}
+								{ctaText}
+								<svg
+									className="w-5 h-5 ml-1"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									aria-hidden="true"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										strokeWidth={2}
+										d="M17 8l4 4m0 0l-4 4m4-4H3"
+									/>
+								</svg>
 							</TemplateButton>
-						)}
+
+							{secondaryCtaText && (
+								<TemplateButton
+									variant={
+										backgroundImage ? 'ghost' : 'outline'
+									}
+									size="lg"
+									href={secondaryCtaHref}
+									className={
+										backgroundImage
+											? 'text-white border-white/30 hover:bg-white/10'
+											: ''
+									}
+								>
+									{secondaryCtaText}
+								</TemplateButton>
+							)}
+						</div>
+					</div>
+
+					{/* Character Image */}
+					<div className="flex-shrink-0 lg:self-center self-center w-full lg:w-auto flex justify-center lg:justify-end">
+						<img
+							src="/characters.png"
+							alt="Bin Medic+ characters"
+							className="w-full max-w-xs sm:max-w-sm lg:max-w-[500px] h-auto"
+						/>
 					</div>
 				</div>
 			</div>

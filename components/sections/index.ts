@@ -19,3 +19,6 @@ export {
 	type Certification,
 } from './CertificationsSection';
 export { PricingSection, type PricingPlan } from './PricingSection';
+export { WelcomeSection } from './WelcomeSection';
+export { OurProcessSection } from './OurProcessSection';
+export { PricingFaqSection } from './PricingFaqSection';
