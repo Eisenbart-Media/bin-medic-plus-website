@@ -170,9 +170,11 @@ export const WhyChooseUsSection = ({
 	className,
 }: WhyChooseUsSectionProps) => {
 	const displayFeatures =
-		(features && features.length > 0) || (reasons && reasons.length > 0)
-			? features || reasons
-			: defaultFeatures;
+		features && features.length > 0
+			? features
+			: reasons && reasons.length > 0
+				? reasons
+				: defaultFeatures;
 	const displayHeadline = headline || 'Why Choose Us';
 	const displaySubheadline =
 		subheadline ||

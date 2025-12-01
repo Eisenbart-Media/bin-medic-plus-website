@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { type ReactNode, useEffect, useRef, useState } from "react";
+import React, { type ReactNode, useEffect, useRef, useState } from "react";
 
 type SectionBackground = "white" | "light" | "dark" | "primary" | "gradient";
 
@@ -75,7 +75,7 @@ export const SectionWrapper = ({
 
   return (
     <Component
-      ref={wrapperRef}
+      ref={wrapperRef as React.RefObject<HTMLDivElement>}
       id={id}
       className={cn(
         "relative w-full overflow-hidden",
