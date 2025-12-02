@@ -128,13 +128,14 @@ export const HeroSection = ({
 						</p>
 
 						{/* CTAs */}
-						<div className="flex flex-wrap gap-4">
+						<div className="flex flex-col sm:flex-row gap-4">
 							<TemplateButton
 								variant={
 									backgroundImage ? 'secondary' : 'primary'
 								}
 								size="lg"
 								href={ctaHref}
+								className="w-full sm:w-auto justify-center"
 							>
 								{ctaText}
 								<svg
@@ -160,11 +161,11 @@ export const HeroSection = ({
 									}
 									size="lg"
 									href={secondaryCtaHref}
-									className={
-										backgroundImage
-											? 'text-white border-white/30 hover:bg-white/10'
-											: ''
-									}
+									className={cn(
+										'w-full sm:w-auto justify-center',
+										backgroundImage &&
+											'text-white border-white/30 hover:bg-white/10'
+									)}
 								>
 									{secondaryCtaText}
 								</TemplateButton>
